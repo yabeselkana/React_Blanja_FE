@@ -1,12 +1,14 @@
-import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import { updateProduct } from "../../config/redux/actions/productAction";
 
 function ModelUpdate({ id, name, stock, price, description, children }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
 
   let [data, setData] = useState({
     id,
@@ -31,29 +33,8 @@ function ModelUpdate({ id, name, stock, price, description, children }) {
 
   let hendelSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("stock", data.stock);
-    formData.append("price", data.price);
-    formData.append("photo", photo);
-    formData.append("description", data.description);
-    axios
-      .put(`http://localhost:4000/products/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        alert("product Update");
-        setShow(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err);
-        setShow(false);
-      });
+
+    dispatch(updateProduct(data, photo, setShow));
   };
 
   return (

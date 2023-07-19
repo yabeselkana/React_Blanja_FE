@@ -1,20 +1,15 @@
 import { FormatRupiah } from "@arismun/format-rupiah";
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getProduct } from "../../config/redux/actions/productAction";
 
 const Products = () => {
+  let dispatch = useDispatch();
   let [product, setProduct] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/products")
-      .then((res) => {
-        setProduct(res.data.data);
-        console.log(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(getProduct(setProduct));
   }, []);
 
   return (

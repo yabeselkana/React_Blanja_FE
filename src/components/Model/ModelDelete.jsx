@@ -1,27 +1,17 @@
-import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import { deleteProducts } from "../../config/redux/actions/productAction";
 
 function ModelDelete({ id, name, children }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
 
   let hendelDelete = (e) => {
-    axios
-      .delete(`http://localhost:4000/products/${id}`)
-      .then((res) => {
-        console.log(res);
-        alert("Delete Successs");
-        setShow(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err);
-        setShow(false);
-      });
+    dispatch(deleteProducts(id, setShow));
   };
 
   return (

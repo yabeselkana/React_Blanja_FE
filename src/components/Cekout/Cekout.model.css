@@ -1,0 +1,42 @@
+.borders {
+  /* background-color: lightseagreen; */
+  /* height: 60px; */
+  width: 97%;
+  /* position: relative; */
+  /* border-radius: 5px;
+     border: 1px  ;
+     box-shadow: 6px 10px 18px 10px #73737340; */
+}
+
+.coba {
+  display: flex;
+}
+.product {
+  background: #ffffff;
+  box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
+  width: 100%;
+}
+.buton {
+  width: 200px;
+}
+.teksl {
+  /* background-color: aqua; */
+  font-size: 1rem;
+  color: #222222;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+  .imgikon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .teksl {
+    font-size: 1.2rem;
+  }
+  .teks1 {
+    /* background-color: antiquewhite; */
+    margin-top: 1rem;
+  }
+}

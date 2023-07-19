@@ -1,7 +1,9 @@
-// import axios from "axios";
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import style from "./Auth.modul.css";
+// import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const Login = () => {
   let [data, setData] = useState({
@@ -18,31 +20,25 @@ const Login = () => {
     console.log(data);
   };
   let onClick = (e) => {
-    // e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("name", data.email);
-    // formData.append("stock", data.password);
-    // axios
-    //   .post("http://localhost:4000/users/login", formData)
-    //   .then((res) => {
-    //     alert("succesful Login");
-    //     localStorage.setItem("token", res.data.data.token);
-    //     localStorage.setItem("refreshToken", res.data.data.refreshToken);
-    //     // e({ type: "USER_LOGIN_SUCCESS", payload: res.data.data });
-    //     navigate("/product");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //     alert("gagal register");
-    //   });
     axios
       .post("http://localhost:4000/users/login", data)
       .then((res) => {
-        alert("succesful Login");
+        // alert("succesful Login");
+        console.log(res.data.data);
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
+        localStorage.setItem("role", res.data.data.role);
         // e({ type: "USER_LOGIN_SUCCESS", payload: res.data.data });
-        navigate("/Profile");
+        if (res.data.status === "success") {
+          Swal.fire("Login Success", "Your account Success Login", "success")
+            .then((result) => {
+              navigate("/home");
+            })
+            .catch((err) => {});
+          // return navigate("/home");
+        }
+
+        // navigate("/home");
       })
       .catch((err) => {
         console.log(err.response);
@@ -52,7 +48,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="container isnan">
+      <div className={`container ${style.cat}  cat `}>
         <img src={require("../../assets/logo.png")} alt="logo" className="imgku" />
         <p className="text-center py-3">Please sign up with your account</p>
         <ul className="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
@@ -70,43 +66,48 @@ const Login = () => {
         <div className="tab-content" id="pills-tabContent">
           <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div className="form-group">
-              <input className="form-control" type="email" name="email" id="email" placeholder="email" onChange={onChange} />
+              <input className="form-control " type="email" name="email" id="email" placeholder="email" onChange={onChange} />
             </div>
             <div className="form-group">
               <input className="form-control" type="password" name="password" id="password" placeholder="password" onChange={onChange} />
             </div>
             <div className="form-group">
-              <a className="float-right py-3 text-danger" href="#">
+              <Link to="" className="float-right py-3 text-danger">
                 Forgot password?
-              </a>
-              <button className="btn btn-block rounded-pill buton " onClick={onClick}>
+              </Link>
+              <button className={`${style.btnlog} btnlog  btn btn-block rounded-pill buton  `} onClick={onClick}>
                 PRIMARY
               </button>
             </div>
 
             <p className="text-regis">
-              Don't have tokopedia account? <Link to="/Register">Register</Link>{" "}
+              Don't have Belanja account?
+              <Link to="/Register" className="text-danger">
+                <spam> Register</spam>
+              </Link>
             </p>
           </div>
           <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <div className="form-group">
-              <input className="form-control" type="email" name="email" id="email" placeholder="email" onChange={onChange} />
+              <input className="form-control " type="email" name="email" id="email" placeholder="email" onChange={onChange} />
             </div>
             <div className="form-group">
               <input className="form-control" type="password" name="password" id="password" placeholder="password" onChange={onChange} />
             </div>
             <div className="form-group">
-              <a className="float-right py-3 text-danger" href="#">
+              <Link to="" className="float-right py-3 text-danger">
                 Forgot password?
-              </a>
+              </Link>
               <button className="btn btn-block rounded-pill buton" onClick={onClick}>
                 PRIMARY
               </button>
             </div>
 
             <p className="text-regis">
-              Don't have tokopedia account?
-              <Link to="/Register">Register</Link>
+              Don't have Belanja account?
+              <Link to="/Register" className="text-danger">
+                <span> Register</span>
+              </Link>
             </p>
           </div>
         </div>

@@ -1,38 +1,23 @@
-import React from "react";
-
-const Carosel = () => {
+import { Container } from "react-bootstrap";
+import Carousel from "react-bootstrap/Carousel";
+function NoTransitionExample() {
   return (
-    <>
-      <section className="container rounded`">
-        <div className="">
-          <div className="p-2 row ">
-            <div id=" carouselExampleInterval" className="carousel slide" data-ride="carousel">
-              <div className="carousel-inner">
-                <div className="carousel-item active" data-interval={10000}>
-                  <img src={require("../../assets/Card Promotion 2.png")} className="d-block w-100" alt="..." />
-                  {/* <img src="/assets/image/Card Promotion 2.png" class="d-block w-100" alt="..."> */}
-                </div>
-                <div className="carousel-item" data-interval={2000}>
-                  <img src={require("../../assets/Card Promotion.png")} className="d-block w-100" alt="..." />
-                </div>
-                <div className="carousel-item">
-                  <img src={require("../../assets/Card Promotion 2.png")} className="d-block w-100" alt="..." />
-                </div>
-              </div>
-              <button className="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true" />
-                <span className="sr-only">Previous</span>
-              </button>
-              <button className="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true" />
-                <span className="sr-only">Next</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    <Container className="mt-4 mb-4">
+      <Container>
+        <Carousel slide={false}>
+          <Carousel.Item>
+            <img className="d-block w-100" src={require("../../assets/Card Promotion.png")} alt="First slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src={require("../../assets/Card Promotion 2.png")} alt="Second slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src={require("../../assets/Card Promotion.png")} alt="Third slide" />
+          </Carousel.Item>
+        </Carousel>
+      </Container>
+    </Container>
   );
-};
+}
 
-export default Carosel;
+export default NoTransitionExample;

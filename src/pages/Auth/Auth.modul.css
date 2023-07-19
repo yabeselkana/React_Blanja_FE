@@ -1,0 +1,43 @@
+.text-regis {
+  text-align: center;
+  padding-top: 1em;
+}
+.cat,
+.cat-lg,
+.cat-md,
+.cat-sm,
+.cat-xl {
+  /* background-color: aquamarine; */
+  max-width: 450px !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.nav-pills .nav-link .active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #273ac7;
+}
+.nav-pills .nav-link {
+  width: 100px;
+}
+.cat img {
+  /* background-color: lightgrey; */
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+a:link,
+a:visited {
+  text-decoration: none !important;
+  color: white;
+  cursor: pointer !important;
+}
+
+.btnlog {
+  background-color: #273ac7 !important;
+  border-radius: none !important;
+  color: #fff;
+}

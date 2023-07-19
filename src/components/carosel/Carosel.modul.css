@@ -1,0 +1,38 @@
+/* Populer */
+
+.populer {
+  padding-top: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70% !important;
+}
+
+.populer .carouselInner {
+  background-position: center;
+  background-size: cover;
+  margin: auto;
+  border-radius: 10px !important;
+  height: 100px;
+}
+
+.populer .carousel-inner .carousel-item {
+  background-position: center;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 500px) {
+  .populer {
+    padding-top: 100px;
+    margin-top: 50px;
+    margin-bottom: -10px !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 100% !important;
+  }
+
+  .populer .carousel-inner {
+    margin: auto;
+    border-radius: 10px !important;
+    height: 100% !important;
+  }
+}

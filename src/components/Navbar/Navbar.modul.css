@@ -1,0 +1,51 @@
+.logo {
+  /* background-color: aqua; */
+  height: 40px;
+  /* margin-left: 30px; */
+}
+.input {
+  /* background-color: aqua; */
+  width: 450px !important;
+  height: 30px !important;
+  border-radius: 25px !important;
+}
+
+.squer {
+  border-radius: 5px;
+  border: 1px solid #8e8e93;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: lightseagreen; */
+  margin-left: 20px;
+}
+
+.logoseach {
+  /* background-color: lightgreen; */
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+  margin-left: -55px;
+}
+.toggler {
+  background: none !important;
+  border: none !important;
+}
+.btn {
+  width: 120px;
+}
+@media only screen and (max-width: 600px) {
+  .logo {
+    margin: 20px, 30px;
+  }
+
+  .input {
+    width: 250px !important;
+  }
+  .searchform {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+}

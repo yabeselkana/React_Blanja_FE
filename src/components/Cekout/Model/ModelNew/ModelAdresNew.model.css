@@ -1,0 +1,11 @@
+.cat {
+  background-color: lightpink;
+  display: flex;
+  justify-content: space-around;
+}
+
+.inputAdress {
+  /* background-color: aquamarine; */
+
+  height: 300px;
+}

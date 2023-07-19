@@ -6,6 +6,7 @@ import Register from "../../pages/Auth/Register.jsx";
 import Profile from "../../pages/Profile/Profile.jsx";
 import Detail from "../../pages/Detail/Detail.jsx";
 import Mybag from "../../pages/Mybag/Mybag.jsx";
+import Cekout from "../../pages/Cekout/Cekout.jsx";
 
 const index = () => {
   return (
@@ -18,7 +19,8 @@ const index = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Detail/:id" element={<Detail />} />
-          <Route path="/home/Mybag" element={<Mybag />} />
+          <Route path="/Mybag" element={<Mybag />} />
+          <Route path="/Cekout" element={<Cekout />} />
         </Routes>
       </BrowserRouter>
     </div>

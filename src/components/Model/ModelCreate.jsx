@@ -1,12 +1,14 @@
-import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import { createProduct } from "../../config/redux/actions/productAction";
 
 function ModelCreate() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
 
   let [data, setData] = useState({
     name: "",
@@ -30,29 +32,8 @@ function ModelCreate() {
 
   let hendelSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("stock", data.stock);
-    formData.append("price", data.price);
-    formData.append("photo", photo);
-    formData.append("description", data.description);
-    axios
-      .post("http://localhost:4000/products", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        alert("product created");
-        setShow(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err);
-        setShow(false);
-      });
+
+    dispatch(createProduct(data, photo, setShow));
   };
 
   return (
