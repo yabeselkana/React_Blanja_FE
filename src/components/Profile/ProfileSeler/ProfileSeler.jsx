@@ -1,20 +1,107 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./ProfileSeler.Model.css";
 import Crud from "../../Crud/Crud";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ProfileSeler = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/users/profile`)
+      .then((res) => {
+        setData(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  let [user, setUser] = useState({
+    name_store: "",
+    description: "",
+    email: "",
+    phone: "",
+  });
+  const hendelUpdate = async (e) => {
+    const users = {
+      name_store: data.name_store,
+      description: data.description,
+      email: data.email,
+      phone: data.phone,
+    };
+
+    setUser(users);
+  };
+  console.log(hendelUpdate);
+
+  const [photo, setPhoto] = useState(null);
+
+  let hendelChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  console.log(user);
+
+  const handleUpload = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+
+  const hendelSubmit = (e) => {
+    e.preventDefault();
+
+    const id = data.id;
+    const formData = new FormData();
+    formData.append("name_store", user.name_store);
+    formData.append("email", user.email);
+    formData.append("phone", user.phone);
+    formData.append("photo", photo);
+    formData.append("description", user.description);
+    axios
+      .put(`http://localhost:4000/users/seller/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: "Product Update",
+          text: `Update Product Success`,
+          icon: "success",
+        });
+
+        window.location.reload();
+      })
+      .catch((err) => {
+        Swal.fire({
+          text: "error",
+          icon: "error",
+        });
+      });
+  };
+
   return (
     <>
       <section className="container">
-        <div className="row">
-          <div className="col-md-3 border p-2 ">
-            <div className="container row">
-              <img className={`${style.img} img`} src={require("../../../assets/ImageProfile/Mask Group (3).png")} alt="" />
-              <div className="mt-2">
-                <h5 className={`${style.name} name `}>Johanes Mikael</h5>
-                <div className="row">
-                  <img className={`${style.imageedit} imageedit mr-1`} src={require("../../../assets/ImageProfile/edit (1) 1.png")} alt="" />
-                  <p className={`${style.teksedit} teksedit`}>Edit Profile</p>
+        <div class="row justify-content-between  pt-5 ">
+          <div className={`col-11 col-md-3 bg-light ${style.leftSide} leftSide`}>
+            <div className=" row p-3">
+              <img className={` ${style.img} img`} src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../../assets/ImageProfile/user.png") : data?.photo} alt="" />
+              <div className="col-8 ">
+                <h5 className={`${style.name} name  `}>{data.name_store}</h5>
+                <div className="container row">
+                  <div className=" ml-4 col-3 ">
+                    <img className={` ${style.imageedit} imageedit mr-1`} src={require("../../../assets/ImageProfile/edit (1) 1.png")} alt="" />
+                  </div>
+                  <p className={`col-8  ${style.teksedit} teksedit`} onClick={hendelUpdate}>
+                    Edit Profile
+                  </p>
                 </div>
               </div>
             </div>
@@ -48,40 +135,43 @@ const ProfileSeler = () => {
             </div>
           </div>
 
-          <div className="col-md-9  border tab-content p-4" id="pills-tabContent">
+          <div className={`container  tab-content p-4  col-11 col-md-8 bg-light ${style.rightSide} rightSide`} id="pills-tabContent">
             <div className="tab-pane fade show active  container" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <dir className={` ${style.profile}   profile border `}>
-                <h3 className="container mt-3">My Profile </h3>
+                <h3 className="container mt-3">My profile store </h3>
                 <p className="container">Manage your profile information</p>
                 <hr />
-
-                <div className=" container row">
-                  <div className="col-md-9">
-                    <div className={`${style.forml} forml`}>
-                      <span className="mr-3">Name</span>
-                      <input type="text" />
+                <form onSubmit={hendelSubmit}>
+                  <div className=" container row">
+                    <div className="col-md-9">
+                      <div className={`${style.forml} forml`}>
+                        <span className="mr-3">Name</span>
+                        <input type="text" name="name_store" value={user?.name_store} onChange={hendelChange} />
+                      </div>
+                      <div className={`${style.forml} mt-4 forml`}>
+                        <span className="mr-3">Email</span>
+                        <input type="text" value={user?.email} name="email" onChange={hendelChange} />
+                      </div>
+                      <div className={`${style.formN} mt-4 ml-1 formN`}>
+                        <span className="mr-3">Phohe Number</span>
+                        <input type="number" value={user?.phone} name="phone" onChange={hendelChange} />
+                      </div>
+                      <div className={`${style.formN} mt-4 ml-1 formN`}>
+                        <span className="mr-3">Store description</span>
+                        <textarea className="form" id="comment" value={user?.description} name="description" onChange={hendelChange} />
+                      </div>
+                      <div className={`${style.formN} mt-4 mb-4 ml-1 formN`}>
+                        <button className={`btn btn-primary rounded-pill `} type="submit">
+                          Seve
+                        </button>
+                      </div>
                     </div>
-                    <div className={`${style.forml} mt-4 forml`}>
-                      <span className="mr-3">Email</span>
-                      <input type="text" />
-                    </div>
-                    <div className={`${style.formN} mt-4 ml-1 formN`}>
-                      <span className="mr-3">Phohe Number</span>
-                      <input type="text" />
-                    </div>
-                    <div className={`${style.formN} mt-4 ml-1 formN`}>
-                      <span className="mr-3">Store description</span>
-                      <textarea className="form" id="comment" />
-                    </div>
-                    <div className={`${style.formN} mt-4 mb-4 ml-1 formN`}>
-                      <button className={`btn btn-primary rounded-pill `}> Seve</button>
+                    <div className={`container col-md-3 ${style.iconprofile} iconprofile `}>
+                      <img src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../../assets/ImageProfile/user.png") : data?.photo} alt="" />
+                      <input type="file" className="btn btn-light rounded-pill mt-3" name="photo" onChange={handleUpload} />
                     </div>
                   </div>
-                  <div className={`container col-md-3 ${style.iconprofile} iconprofile `}>
-                    <img src={require("../../../assets/ImageProfile/Mask Group (4).png")} alt="" />
-                    <button className="btn btn-light rounded-pill mt-3"> Select image</button>
-                  </div>
-                </div>
+                </form>
               </dir>
             </div>
             <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">

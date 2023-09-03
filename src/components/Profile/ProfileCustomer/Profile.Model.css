@@ -1,11 +1,25 @@
+.leftSide {
+  box-shadow: 5px 7px 21px -8px rgba(103, 96, 184, 0.98);
+  background-color: white;
+  border-radius: 5px;
+  width: 32%;
+  height: 100%;
+  padding: 20px;
+}
+.rightSide {
+  box-shadow: 5px 7px 21px -8px rgba(103, 96, 184, 0.98);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  height: 100%;
+}
+
 .img {
   width: 70px;
   height: 70px;
   margin-top: 20px;
 }
 
-.coba {
-}
 .name {
   margin-top: 20px;
   margin-left: 15px;
@@ -156,7 +170,17 @@ input {
   .coba {
     display: flex;
   }
+  .leftSide {
+    margin-bottom: 20px !important;
+    width: 90%;
+    margin: auto;
+  }
 
+  .leftSide {
+    margin-bottom: 20px !important;
+    width: 90%;
+    margin: auto;
+  }
   .coba1 {
     /* background-color: lightsalmon; */
     display: flex !important;

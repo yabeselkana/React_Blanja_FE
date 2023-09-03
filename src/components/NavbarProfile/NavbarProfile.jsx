@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import style from "./NavbarProfile.modul.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // import Swal from "sweetalert2";
 // import swal from "sweetalert";
 
 const NavbarProfile = () => {
+  const id = localStorage.getItem("id_user");
   // const navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/users/profile`)
+      .then((res) => {
+        setData(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const hendelOut = () => {
     localStorage.removeItem("token");
   };
@@ -33,17 +50,21 @@ const NavbarProfile = () => {
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0 row justify-content-center">
-              <Link to="/Mybag">
+              <Link to={`/Mybag/${id}`}>
                 <img className="mr-3" src={require("../../assets/shopping-cart.png")} alt="cart" />
               </Link>
               <img className="mr-4" src={require("../../assets/bell (1) 1.png")} alt="" />
               <img className="mr-4" src={require("../../assets/mail (3) 1.png")} alt="" />
               <Link to="/Profile">
-                <img className="mr-4" src={require("../../assets/Mask Group.png")} alt="" />
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                  <img className="mr-4" src={require("../../assets/Mask Group.png")} alt="" />
+                </a>
+                <div class="dropdown-menu">
+                  <p className="" onClick={hendelOut}>
+                    Logout
+                  </p>
+                </div>
               </Link>
-              <button className="btn btn-primary" onClick={hendelOut}>
-                Logout
-              </button>
             </form>
           </div>
         </nav>

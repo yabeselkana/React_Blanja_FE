@@ -19,8 +19,8 @@ const index = () => {
           <Route path="/Register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Detail/:id" element={<Detail />} />
-          <Route path="/Mybag" element={<Mybag />} />
-          <Route path="/Cekout" element={<Cekout />} />
+          <Route path="/Mybag/:id" element={<Mybag />} />
+          <Route path="/Cekout/:id" element={<Cekout />} />
         </Routes>
       </BrowserRouter>
     </div>

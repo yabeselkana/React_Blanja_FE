@@ -85,11 +85,11 @@ const Crud = () => {
         <ModalCreate className="container" />
         <div className=" mt-4 container row">
           <div className="container  mb-2">
-            <select onChange={handleSort}>
+            {/* <select onChange={handleSort}>
               <option value="">Pilih Option</option>
               <option value="ASC">A-Z</option>
               <option value="DESC">Z-A</option>
-            </select>
+            </select> */}
           </div>
           <div className="container">
             <input type="text" name="search" placeholder="search" onChange={(e) => setSearch(e.target.value)} />

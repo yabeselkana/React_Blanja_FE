@@ -1,38 +1,65 @@
-/* Populer */
-
-.populer {
-  padding-top: 100px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 70% !important;
-}
-
-.populer .carouselInner {
-  background-position: center;
-  background-size: cover;
-  margin: auto;
+.fashion-display {
+  width: 100% !important;
+  height: 200px !important;
   border-radius: 10px !important;
-  height: 100px;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
 }
 
-.populer .carousel-inner .carousel-item {
-  background-position: center;
-  background-size: cover;
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white !important;
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 100% !important;
+  -webkit-border-radius: 100% !important;
+  -moz-border-radius: 100% !important;
+  -ms-border-radius: 100% !important;
+  -o-border-radius: 100% !important;
+  margin-right: 50px !important;
+  margin-left: 50px !important;
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  color: rgba(93, 93, 93) !important;
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+  /* text-shadow: 1px -1px 0px rgba(93,93,93,1); */
+}
+.swiper-pagination {
+  position: relative !important;
+  text-align: start !important;
+  transition: 0.3s opacity;
+  /* transform: translate3d(0,0,0); */
+  z-index: 10;
+  left: 0;
+  bottom: -3px !important;
 }
 
-@media only screen and (max-width: 500px) {
-  .populer {
-    padding-top: 100px;
-    margin-top: 50px;
-    margin-bottom: -10px !important;
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 100% !important;
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: gray !important;
+}
+
+@media only screen and (max-width: 769px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
   }
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    display: none !important;
+  }
+}
 
-  .populer .carousel-inner {
-    margin: auto;
-    border-radius: 10px !important;
-    height: 100% !important;
+@media only screen and (max-width: 425px) {
+  .swiper-slide-trend {
+    width: 100% !important;
   }
 }

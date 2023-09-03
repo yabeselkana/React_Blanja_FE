@@ -9,11 +9,12 @@ import NavbarProfile from "../components/NavbarProfile/NavbarProfile";
 
 const Home = () => {
   const isLogin = localStorage.getItem("token");
-  // console.log(isLogin);
-
+  console.log(isLogin);
+  // const isLogin = localStorage.getItem("email");
   return (
     <>
       {!isLogin ? <Navbar /> : <NavbarProfile />}
+
       <main>
         <Carosel />
         <Category />

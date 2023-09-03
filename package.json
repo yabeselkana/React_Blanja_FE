@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@arismun/format-rupiah": "^3.0.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -28,6 +29,7 @@
     "redux-thunk": "^2.4.2",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.16",
+    "swiper": "^10.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

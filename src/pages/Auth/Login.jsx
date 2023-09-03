@@ -28,6 +28,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
         localStorage.setItem("role", res.data.data.role);
+        localStorage.setItem("id_user", res.data.data.id);
         // e({ type: "USER_LOGIN_SUCCESS", payload: res.data.data });
         if (res.data.status === "success") {
           Swal.fire("Login Success", "Your account Success Login", "success")
