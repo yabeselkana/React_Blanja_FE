@@ -4,13 +4,19 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProduct } from "../../config/redux/actions/productAction";
-
+import Pagination from "../Pagination";
+import style from "./New.module.css";
 const Products = () => {
   let dispatch = useDispatch();
   let [product, setProduct] = useState([]);
   useEffect(() => {
     dispatch(getProduct(setProduct));
   }, []);
+  const [currentPage, setCurrentPage] = useState(4);
+  const [postsPerPage] = useState(4);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = product.slice(firstPostIndex, lastPostIndex);
 
   return (
     <>
@@ -19,7 +25,7 @@ const Products = () => {
         <p className="ml-3">You've never seen before!</p>
         <div className="container mt-5">
           <div className="row">
-            {product.map((item, index) => (
+            {currentPosts.map((item, index) => (
               <div className="col-md-3 col-sm-6 mb-5">
                 <Link to={`/Detail/${item.id}`} key={index.toString()} style={{ color: "black" }}>
                   <div className="border rounded product">
@@ -36,6 +42,7 @@ const Products = () => {
               </div>
             ))}
           </div>
+          <Pagination className={`${style.pagination}`} totalPosts={product.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
         </div>
       </section>
     </>

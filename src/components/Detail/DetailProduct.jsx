@@ -1,26 +1,26 @@
 import { FormatRupiah } from "@arismun/format-rupiah";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import "./Detail.css";
-import Quantity from "./Atribut/Qantity";
+
 import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 
 const DetailProduct = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   let { id } = useParams();
   let [product, setProduct] = useState("");
-  let [idproduct, setIdProduct] = useState("");
+
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/products/${id}`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
       .then((res) => {
         setProduct(res.data.data[0]);
         // localStorage.setItem("id_product", res.data.data[0].id);s
-        setIdProduct(res.data.data[0].id);
+
         console.log(res.data.data[0]);
       })
       .catch((err) => {
@@ -65,7 +65,7 @@ const DetailProduct = () => {
       }
       const id = localStorage.getItem("id_user");
       axios
-        .post(`http://localhost:4000/orders`, {
+        .post(`${process.env.REACT_APP_API_BACKEND}/orders`, {
           address: null,
           qty: jumlah,
           shipping: null,
@@ -98,7 +98,7 @@ const DetailProduct = () => {
       }
       const id = localStorage.getItem("id_user");
       axios
-        .post(`http://localhost:4000/payment`, {
+        .post(`${process.env.REACT_APP_API_BACKEND}/payment`, {
           qty: jumlah,
           total_price: jumlah * product.price,
           id_product: product.id,

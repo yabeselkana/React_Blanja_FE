@@ -143,7 +143,10 @@ input {
   justify-content: center;
   height: 200px;
 }
-
+.iconCostomer {
+  width: 700px;
+  height: 150px;
+}
 .boder1 {
   /* background-color: aquamarine; */
   border-radius: 5px;

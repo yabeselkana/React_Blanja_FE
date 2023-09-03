@@ -43,7 +43,11 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err.response);
-        alert("gagal register");
+        Swal.fire({
+          title: "Failed",
+          text: { err },
+          icon: "error",
+        });
       });
   };
 
@@ -99,7 +103,7 @@ const Login = () => {
               <Link to="" className="float-right py-3 text-danger">
                 Forgot password?
               </Link>
-              <button className="btn btn-block rounded-pill buton" onClick={onClick}>
+              <button className={`${style.btnlog} btnlog  btn btn-block rounded-pill buton  `} onClick={onClick}>
                 PRIMARY
               </button>
             </div>

@@ -4,21 +4,16 @@ import style from "./Cekout.model.css";
 import ModelAdres from "./Model/ModelAdres";
 import ModelPayment from "./Model/ModelPayment/ModelPayment";
 import axios from "axios";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FormatRupiah } from "@arismun/format-rupiah";
 
 const CekoutIsi = () => {
   const [alamat, setAlamat] = useState([]);
   let { id } = useParams();
 
-  const location = useLocation();
-  const { state } = location;
-
-  // console.log(state.id_address);
-
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/address/user/${id}`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/address/user/${id}`)
       .then((res) => {
         setAlamat(res.data.data[0]);
         // localStorage.setItem("id_product", res.data.data[0].id);s
@@ -33,7 +28,7 @@ const CekoutIsi = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/payment/user/${id}`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/payment/user/${id}`)
       .then((res) => {
         setData(res.data.data);
         console.log(res.data.data);
@@ -115,7 +110,7 @@ const CekoutIsi = () => {
                     <FormatRupiah value={totalPrice() + delevery} />
                   </p>
                 </div>
-                <ModelPayment>Select payment</ModelPayment>
+                <ModelPayment id={id}>Select payment</ModelPayment>
               </div>
             </div>
           </div>

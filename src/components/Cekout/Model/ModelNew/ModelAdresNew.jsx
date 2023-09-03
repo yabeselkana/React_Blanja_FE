@@ -43,7 +43,7 @@ function ModelAdresNew({ children }) {
       //   return;
       // }
 
-      axios.post(`http://localhost:4000/address`, data).then((response) => {
+      axios.post(`${process.env.REACT_APP_API_BACKEND}/address`, data).then((response) => {
         alert("berhasil");
         window.location.reload();
       });

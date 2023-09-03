@@ -9,7 +9,7 @@ const ProfileSeler = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/users/profile`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/users/profile`)
       .then((res) => {
         setData(res.data.data);
         console.log(res.data.data);
@@ -63,7 +63,7 @@ const ProfileSeler = () => {
     formData.append("photo", photo);
     formData.append("description", user.description);
     axios
-      .put(`http://localhost:4000/users/seller/${id}`, formData, {
+      .put(`${process.env.REACT_APP_API_BACKEND}/users/seller/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -167,7 +167,7 @@ const ProfileSeler = () => {
                       </div>
                     </div>
                     <div className={`container col-md-3 ${style.iconprofile} iconprofile `}>
-                      <img src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../../assets/ImageProfile/user.png") : data?.photo} alt="" />
+                      <img className={`${style.iconCostomer} iconCostomer`} src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../../assets/ImageProfile/user.png") : data?.photo} alt="" />
                       <input type="file" className="btn btn-light rounded-pill mt-3" name="photo" onChange={handleUpload} />
                     </div>
                   </div>

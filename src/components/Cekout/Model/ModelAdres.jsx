@@ -16,12 +16,11 @@ function ModelAdres() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const id_users = localStorage.getItem("id_user");
-  console.log(id_users);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/address/user/${id_users}`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/address/user/${id_users}`)
       .then((res) => {
         setData(res.data.data);
         // localStorage.setItem("id_product", res.data.data[0].id);s
@@ -46,7 +45,7 @@ function ModelAdres() {
   const hendeldelete = (id) => {
     console.log(id);
     axios
-      .delete(`http://localhost:4000/address/${id}`)
+      .delete(`${process.env.REACT_APP_API_BACKEND}/address/${id}`)
       .then((res) => {
         console.log(res);
         Swal.fire({
@@ -78,24 +77,21 @@ function ModelAdres() {
         </Modal.Header>
 
         <Modal.Body>
-          <div className={`  text-center center ${style.boder1} boder1  `}>
+          <div className={`${style.boder1} boder1  `}>
             <ModelAdresNew className="container">Add new address </ModelAdresNew>
           </div>
           {data?.map((item) => (
-            <div className={` center ${style.boder} boder  mt-3`}>
+            <div className={`  ${style.boder} boder  mt-3`}>
               <h5 className="container ">{item.recipientname} </h5>
               <p className="container  ">
                 {item.address}, {item.City}, {item.postalcode}, {item.phone}
               </p>
-              <div className="row">
-                <p className=" col-6   text-warning" onClick={() => hendelChangeAddress(item.id_users, item.id)}>
-                  Change address
-                </p>
-
-                <p className=" col-6  text-danger" onClick={() => hendeldelete(item.id)}>
-                  Hapus
-                </p>
-              </div>
+              <h6 className=" text-warning" onClick={() => hendelChangeAddress(item.id_users, item.id)}>
+                Change address
+              </h6>
+              <p className="text-danger" onClick={() => hendeldelete(item.id)}>
+                Hapus
+              </p>
             </div>
           ))}
         </Modal.Body>

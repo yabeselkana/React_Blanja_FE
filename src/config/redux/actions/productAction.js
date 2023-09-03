@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 // Get
 export const getProduct = (setProducts) => async (dispatch) => {
   try {
-    axios.get("http://localhost:4000/products").then(function (respose) {
+    axios.get(`${process.env.REACT_APP_API_BACKEND}/products`).then(function (respose) {
       setProducts(respose.data.data);
     });
 
@@ -27,7 +27,7 @@ export const createProduct = (data, saveImage, setShow) => async (dispatch) => {
     formData.append("photo", saveImage);
     formData.append("description", data.description);
     axios
-      .post("http://localhost:4000/products", formData, {
+      .post(`${process.env.REACT_APP_API_BACKEND}/products`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -61,7 +61,7 @@ export const updateProduct = (data, photo, setShow) => async (dispatch) => {
     formData.append("photo", photo);
     formData.append("description", data.description);
     axios
-      .put(`http://localhost:4000/products/${data.id}`, formData, {
+      .put(`${process.env.REACT_APP_API_BACKEND}/products/${data.id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -91,7 +91,7 @@ export const updateProduct = (data, photo, setShow) => async (dispatch) => {
 export const deleteProducts = (id, setShow) => async (dispatch) => {
   try {
     axios
-      .delete(`http://localhost:4000/products/${id}`)
+      .delete(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
       .then((res) => {
         console.log(res);
         Swal.fire({

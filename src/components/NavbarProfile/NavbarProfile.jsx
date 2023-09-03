@@ -55,16 +55,29 @@ const NavbarProfile = () => {
               </Link>
               <img className="mr-4" src={require("../../assets/bell (1) 1.png")} alt="" />
               <img className="mr-4" src={require("../../assets/mail (3) 1.png")} alt="" />
-              <Link to="/Profile">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                  <img className="mr-4" src={require("../../assets/Mask Group.png")} alt="" />
-                </a>
-                <div class="dropdown-menu">
-                  <p className="" onClick={hendelOut}>
+
+              <div className="dropdown">
+                <img
+                  className={`${style.iconsprofile} iconsprofile`}
+                  src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../assets/ImageProfile/user.png") : data?.photo}
+                  alt=""
+                  href="#"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                />
+
+                <div className="dropdown-menu">
+                  <Link to="/Profile">
+                    <a className="dropdown-item" href="#">
+                      Profile
+                    </a>
+                  </Link>
+                  <a className="dropdown-item" onClick={hendelOut}>
                     Logout
-                  </p>
+                  </a>
                 </div>
-              </Link>
+              </div>
             </form>
           </div>
         </nav>

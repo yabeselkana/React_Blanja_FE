@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import style from "./Mybag.model.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import Swal from "sweetalert2";
@@ -23,7 +23,7 @@ const MybagIsi = () => {
   const navigete = useNavigate();
 
   const [selectedItems, setSelectedItems] = useState("");
-  const [selectedCount, setSelectedCount] = useState(0);
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleCheckboxChange = (itemId, price) => {
@@ -43,7 +43,7 @@ const MybagIsi = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/orders/user/${id}`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/orders/user/${id}`)
       .then((res) => {
         setData(res.data.data);
         // localStorage.setItem("id_product", res.data.data[0].id);s
@@ -56,7 +56,7 @@ const MybagIsi = () => {
 
   const hendeldelete = async (selectedItems) => {
     axios
-      .delete(`http://localhost:4000/orders/${selectedItems}`)
+      .delete(`${process.env.REACT_APP_API_BACKEND}/orders/${selectedItems}`)
       .then((res) => {
         console.log(res);
         Swal.fire({

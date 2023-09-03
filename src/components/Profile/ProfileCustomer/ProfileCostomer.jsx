@@ -10,7 +10,7 @@ const ProfileCostomer = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/users/profile`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/users/profile`)
       .then((res) => {
         setData(res.data.data);
         console.log(res.data.data);
@@ -78,7 +78,7 @@ const ProfileCostomer = () => {
     formData.append("photo", photo);
     formData.append("gender", radio.type_portfolio);
     axios
-      .put(`http://localhost:4000/users/costomer/${id}`, formData, {
+      .put(`${process.env.REACT_APP_API_BACKEND}/users/costomer/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -94,6 +94,47 @@ const ProfileCostomer = () => {
         window.location.reload();
       })
       .catch((err) => {
+        Swal.fire({
+          text: "error",
+          icon: "error",
+        });
+      });
+  };
+
+  const id_users = localStorage.getItem("id_user");
+  const [addres, setAddres] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_BACKEND}/address/user/${id_users}`)
+      .then((res) => {
+        setAddres(res.data.data);
+        // localStorage.setItem("id_product", res.data.data[0].id);s
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const hendelChangeAddress = (id, id_address) => {};
+
+  const hendeldelete = (id) => {
+    console.log(id);
+    axios
+      .delete(`${process.env.REACT_APP_API_BACKEND}/address/${id}`)
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: " Addres",
+          text: `Delete Addres`,
+          icon: "success",
+        });
+
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
         Swal.fire({
           text: "error",
           icon: "error",
@@ -195,7 +236,7 @@ const ProfileCostomer = () => {
                       </div>
                     </div>
                     <div className={`container col-md-3 ${style.iconprofile} iconprofile `}>
-                      <img src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../../assets/ImageProfile/user.png") : data?.photo} alt="" />
+                      <img className={`${style.iconCostomer} iconCostomer`} src={data.photo === "null" || data.photo === null || data.photo === "" ? require("../../../assets/ImageProfile/user.png") : data?.photo} alt="" />
                       <input type="file" className="btn btn-light rounded-pill mt-3" name="photo" onChange={handleUpload} />
                     </div>
                   </div>
@@ -206,12 +247,21 @@ const ProfileCostomer = () => {
               <div className={`  text-center center ${style.boder1} boder1  `}>
                 <ModelAdresNew>Add new address</ModelAdresNew>
               </div>
-
-              <div className={` center ${style.boder} boder  mt-3`}>
-                <h5 className="container ">Andreas Jane </h5>
-                <p className="container ">Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok c 16] Sokaraja, Kab. Banyumas, 53181</p>
-                <p className="container text-danger">Change address</p>
-              </div>
+              {addres.map((item) => (
+                <div className={` center ${style.boder} boder  mt-3`}>
+                  <h5 className="container ">{item.recipientname} </h5>
+                  <p className="container ">
+                    {" "}
+                    {item.address}, {item.City}, {item.postalcode}, {item.phone}
+                  </p>
+                  <h6 className=" text-warning" onClick={() => hendelChangeAddress(item.id_users, item.id)}>
+                    Edit address
+                  </h6>
+                  <p className="text-danger" onClick={() => hendeldelete(item.id)}>
+                    Hapus
+                  </p>
+                </div>
+              ))}
             </div>
             <div className="tab-pane fade" id="pills-order" role="tabpanel" aria-labelledby="pills-order-tab">
               <dir className={` ${style.profile}   profile border `}>

@@ -3,12 +3,39 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import style from "./ModelPayment.model.css";
+import axios from "axios";
+import { useEffect } from "react";
+import { FormatRupiah } from "@arismun/format-rupiah";
 
-function ModelPayment({ children }) {
+function ModelPayment({ id, children }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_BACKEND}/payment/user/${id}`)
+      .then((res) => {
+        setData(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const delevery = 50000;
+
+  const totalPrice = () => {
+    let totalOrderCart = 0;
+    data.map((item) => (totalOrderCart += item.total_price));
+    return totalOrderCart;
+  };
+
+  console.log(totalPrice());
 
   return (
     <>
@@ -55,21 +82,30 @@ function ModelPayment({ children }) {
         <Modal.Body>
           <h5>Shopping summary</h5>
           <Form.Group>
-            <Form.Group className="row">
-              <p className="col-10">Order</p>
-              <p className="col-2">$ 40.0</p>
+            <Form.Group className="container row">
+              <h5 className=" font-bold col-9">Order</h5>
+              <h5 className=" font-bold  co-2">
+                {" "}
+                <FormatRupiah value={totalPrice()} />
+              </h5>
             </Form.Group>
-            <Form.Group className="row mb-5">
-              <p className="col-10">Delivery</p>
-              <p className="col-2">$ 5.0</p>
+            <Form.Group className="container row mb-5">
+              <h5 className="font-bold  col-9">Delivery</h5>
+              <h5 className="font-bold  col-2">
+                {" "}
+                <FormatRupiah value={delevery} />
+              </h5>
             </Form.Group>
           </Form.Group>
         </Modal.Body>
         <hr />
         <Modal.Body className="row">
           <Form.Group className="col-7">
-            <h6>Shopping summary</h6>
-            <p>$ 45.0</p>
+            <h4 className="font-bold">Shopping summary</h4>
+            <h5 className="font-bold">
+              {" "}
+              <FormatRupiah value={totalPrice() + delevery} />
+            </h5>
           </Form.Group>
           <Form.Group className="col-2 mt-4">
             <Button className="rounded-pill " variant="primary">
