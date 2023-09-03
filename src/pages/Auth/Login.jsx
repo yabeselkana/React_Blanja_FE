@@ -21,7 +21,7 @@ const Login = () => {
   };
   let onClick = (e) => {
     axios
-      .post("http://localhost:4000/users/login", data)
+      .post(`${process.env.REACT_APP_API_BACKEND}/users/login`, data)
       .then((res) => {
         // alert("succesful Login");
         console.log(res.data.data);

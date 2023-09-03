@@ -39,7 +39,7 @@ const Register = () => {
     // console.log(signupData);
 
     axios
-      .post("http://localhost:4000/users/register", signupData)
+      .post(`${process.env.REACT_APP_API_BACKEND}/users/register`, signupData)
       .then((res) => {
         console.log(res);
         Swal.fire("Login Success", "Your account Success Login", "success")
