@@ -124,10 +124,18 @@ npm run build
   </tr>
   <tr>
     <td><img width="350px" src="./documentation/detail2.PNG" border="0" alt="Search" /></td>
-    <td><img width="350px" src="./documentation/Cekout.PNG" border="0" alt="Detail Talent" /> </td>
+    <td><img width="350px" src="./documentation/mybg.PNG" border="0" alt="Detail Talent" /> </td>
   </tr>
   <tr>
     <td>Detail Desc</td>
+    <td>My Bag</td>
+  </tr>
+   <tr>
+    <td><img width="350px" src="./documentation/addres.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/Cekout.PNG" border="0" alt="Detail Talent" /> </td>
+  </tr>
+  <tr>
+    <td>Addres</td>
     <td>Cekout</td>
   </tr>
    <tr>
