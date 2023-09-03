@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import style from "./NavbarProfile.modul.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // import Swal from "sweetalert2";
 // import swal from "sweetalert";
