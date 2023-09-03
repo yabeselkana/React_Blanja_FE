@@ -5,9 +5,9 @@
   </div>
   <h3 align="center">Blanja (Blanja App)</h3>
   <p align="center">
-    <a href="https://github.com/abubakar-adeni/blanja"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/yabeselkana/react_biginer.git"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://blanja-fe-zeta.vercel.app/">View Demo</a>
+    <a href="https://react-biginer-76cbl58fm-yabeselkana.vercel.app">View Demo</a>
   </p>
 </p>
 
@@ -54,7 +54,7 @@ Follow this steps to run the server locally
 1. Clone this repository
 
 ```sh
-git clone https://github.com/abubakar-adeni/blanja.git
+git clone https://github.com/yabeselkana/react_biginer.git
 ```
 
 2. Change directory to blanja
@@ -89,56 +89,86 @@ npm run build
 
 # Screenshots
 
-<img width="840" src="./documentation/all-devices-black.png" border="0" alt="Landing Page" />
-<br>
-
 <table>
   <tr>
     <td><img width="350px" src="./documentation/loginCostomer.PNG" border="0" alt="Login" /></td>
     <td> <img width="350px" src="./documentation/loginSeller.PNG" border="0"  alt="Register" /></td>
   </tr>
   <tr>
-    <td>Login</td>
-    <td>Register</td>
+    <td>Login Costomer</td>
+    <td>Login Seller</td>
   </tr>
   <tr>
-    <td><img width="350px" src="./documentation/profile.png" border="0" alt="Profile" /> </td>
-    <td><img width="350px" src="./documentation/address.png" border="0" alt="Profile" /> </td>
+    <td><img width="350px" src="./documentation/registerCostomer.PNG" border="0" alt="Profile" /> </td>
+    <td><img width="350px" src="./documentation/registersller.PNG" border="0" alt="Profile" /> </td>
   </tr>
   <tr>
-    <td>Edit Profile</td>
-    <td>Edit Address</td>
+    <td>RegisteCostomer</td>
+    <td>RegisterSeller</td>
   </tr>
   <tr>
-    <td><img width="350px" src="./documentation/myorder.png" border="0" alt="Hire" /> </td>
-    <td><img width="350px" src="./documentation/product.png" border="0" alt="Hire" /> </td>
+    <td><img width="350px" src="./documentation/home1.PNG" border="0" alt="Hire" /> </td>
+    <td><img width="350px" src="./documentation/home2.PNG" border="0" alt="Hire" /> </td>
   </tr>
   <tr>
-    <td>My Order Pages</td>
-    <td>Product Pages</td>
+    <td>Home </td>
+    <td>Home</td>
   </tr>
   <tr>
-    <td><img width="350px" src="./documentation/search.png" border="0" alt="Search" /></td>
-    <td><img width="350px" src="./documentation/detail.png" border="0" alt="Detail Talent" /> </td>
+    <td><img width="350px" src="./documentation/home3.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/detail.PNG" border="0" alt="Detail Talent" /> </td>
   </tr>
   <tr>
-    <td>Search</td>
+    <td>Home</td>
     <td>Detail Product</td>
   </tr>
   <tr>
-    <td><img width="350px" src="./documentation/checkout.png" border="0" alt="Search" /></td>
-    <td><img width="350px" src="./documentation/payment.png" border="0" alt="Detail Talent" /> </td>
+    <td><img width="350px" src="./documentation/detail2.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/Cekout.PNG" border="0" alt="Detail Talent" /> </td>
   </tr>
   <tr>
-    <td>Checkout</td>
+    <td>Detail Desc</td>
+    <td>Cekout</td>
+  </tr>
+   <tr>
+    <td><img width="350px" src="./documentation/formAdress.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/payment.PNG" border="0" alt="Detail Talent" /> </td>
+  </tr>
+  <tr>
+    <td>Addres</td>
     <td>Payment</td>
   </tr>
+    <tr>
+    <td><img width="350px" src="./documentation/profileCostomer.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/profileSeller.PNG" border="0" alt="Detail Talent" /> </td>
+  </tr>
+  <tr>
+    <td>Profile Costomer</td>
+    <td>Profile Seller</td>
+  </tr>
+   <tr>
+    <td><img width="350px" src="./documentation/profileAddresCostomer.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/productseller.PNG" border="0" alt="Detail Talent" /> </td>
+  </tr>
+  <tr>
+    <td>Profile Costomer Address</td>
+    <td>Profile Seller Product</td>
+  </tr>
+     <tr>
+    <td><img width="350px" src="./documentation/myOrderCostomer.PNG" border="0" alt="Search" /></td>
+    <td><img width="350px" src="./documentation/myorderSeller.PNG" border="0" alt="Detail Talent" /> </td>
+  </tr>
+  <tr>
+    <td>Profile Costomer My Order</td>
+    <td>Profile Seller My Order</td>
+  </tr>
+
 </table>
 
 # Related Project
 
-:rocket: [`Frontend Blanja`](https://github.com/alkarim99/blanja)
+:rocket: [`Frontend Blanja`](https://github.com/yabeselkana/react_biginer.git)
 
-:rocket: [`Backend Blanja`](https://github.com/alkarim99/blanja-app-be)
+:rocket: [`Backend Blanja`](https://github.com/yabeselkana/backend_express.js.git)
 
-:rocket: [`Demo Blanja`](https://blanja-fe-zeta.vercel.app/)
+:rocket: [`Demo Blanja`](https://react-biginer-76cbl58fm-yabeselkana.vercel.app)
