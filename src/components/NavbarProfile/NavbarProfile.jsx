@@ -8,7 +8,7 @@ import axios from "axios";
 
 const NavbarProfile = () => {
   const id = localStorage.getItem("id_user");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
 
@@ -26,6 +26,7 @@ const NavbarProfile = () => {
 
   const hendelOut = () => {
     localStorage.removeItem("token");
+    navigate("/home");
   };
   return (
     <>

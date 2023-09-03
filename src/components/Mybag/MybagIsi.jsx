@@ -119,7 +119,7 @@ const MybagIsi = () => {
 
       console.log(combinedObject);
 
-      const response = await axios.post("http://localhost:4000/payment", combinedObject);
+      const response = await axios.post(`${process.env.REACT_APP_API_BACKEND}/payment`, combinedObject);
 
       console.log("Checkout response:", response.data.status);
       const id = localStorage.getItem("id_user");
@@ -132,7 +132,7 @@ const MybagIsi = () => {
         navigete(`/Cekout/${id}`);
         // Delete items after successful checkout
         axios
-          .delete(`http://localhost:4000/orders/${selectedItems}`)
+          .delete(`${process.env.REACT_APP_API_BACKEND}/orders/${selectedItems}`)
           .then((res) => {
             console.log(res);
             // Refresh the page to reflect changes
