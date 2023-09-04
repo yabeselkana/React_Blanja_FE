@@ -14,7 +14,7 @@ const NavbarProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/users/profile`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/users/profile`)
       .then((res) => {
         setData(res.data.data);
         console.log(res.data.data);
