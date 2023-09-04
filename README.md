@@ -7,7 +7,7 @@
   <p align="center">
     <a href="https://github.com/yabeselkana/react_biginer.git"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://react-biginer-76cbl58fm-yabeselkana.vercel.app">View Demo</a>
+    <a href="https://react-biginer-o1cr65hcd-yabeselkana.vercel.app">View Demo</a>
   </p>
 </p>
 
@@ -45,7 +45,7 @@ You'll need these programs installed before proceeding to installation
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/en/download)
 
-This project requires [blanja-app-be](https://github.com/alkarim99/blanja-app-be) to function properly, follow the steps provided in the readme to install and run the backend API
+This project requires [blanja-app-be](https://github.com/yabeselkana/backend_express.js.git) to function properly, follow the steps provided in the readme to install and run the backend API
 
 ## Installation
 
