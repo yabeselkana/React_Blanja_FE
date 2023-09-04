@@ -7,7 +7,7 @@
   <p align="center">
     <a href="https://github.com/yabeselkana/react_biginer.git"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://react-biginer-o1cr65hcd-yabeselkana.vercel.app">View Demo</a>
+    <a href="https://react-biginer.vercel.app/home">View Demo</a>
   </p>
 </p>
 
@@ -179,4 +179,4 @@ npm run build
 
 :rocket: [`Backend Blanja`](https://github.com/yabeselkana/backend_express.js.git)
 
-:rocket: [`Demo Blanja`](https://react-biginer-76cbl58fm-yabeselkana.vercel.app)
+:rocket: [`Demo Blanja`](https://react-biginer.vercel.app/home)
