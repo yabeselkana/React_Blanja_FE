@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import style from "./NavbarProfile.modul.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 // import swal from "sweetalert";
 
@@ -26,6 +27,11 @@ const NavbarProfile = () => {
 
   const hendelOut = () => {
     localStorage.removeItem("token");
+    Swal.fire({
+      text: "Logout",
+      icon: "succes",
+    });
+    window.location.reload();
     navigate("/home");
   };
   return (
