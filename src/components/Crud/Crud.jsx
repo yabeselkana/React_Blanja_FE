@@ -54,7 +54,7 @@ const Crud = () => {
     console.log(searchParams);
 
     axios
-      .get(`http://localhost:4000/products?${searchParams}`)
+      .get(`${process.env.REACT_APP_API_BACKEND}/products?${searchParams}`)
       .then((res) => {
         setProducts(res.data.data);
       })
